@@ -56,7 +56,7 @@ public class User {
         /* If nothing was loaded then there is no point saving anything. */
         if (!isLoaded())
             return;
-        Bukkit.getScheduler().runTask(StatsAPI.getPlugin(), new Runnable() {
+        Bukkit.getScheduler().runTaskAsynchronously(StatsAPI.getPlugin(), new Runnable() {
             public void run() {
                 try (PreparedStatement pst = StatsAPI.getDB().getConnection()
                         .prepareStatement("UPDATE stats SET kills = ?, deaths = ?, wins = ?, losses = ?")) {
